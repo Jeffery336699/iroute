@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'v12/app.dart';
+///修改这里演示不同的效果，渐进式的
+import 'v2/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

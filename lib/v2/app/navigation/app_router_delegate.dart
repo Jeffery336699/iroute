@@ -53,6 +53,7 @@ class AppRouterDelegate extends RouterDelegate<Object> with ChangeNotifier {
 
   @override
   Widget build(BuildContext context) {
+    print('build=========$path');
     return Navigator(
       onPopPage: _onPopPage,
       pages: _buildPageByPath(path),
@@ -83,12 +84,17 @@ class AppRouterDelegate extends RouterDelegate<Object> with ChangeNotifier {
   }
 
   List<Page> buildColorPages(String path){
+    print('buildColorPages=========$path');
     List<Page> result = [];
     Uri uri = Uri.parse(path);
     for (String segment in uri.pathSegments) {
       if(segment == 'color'){
-        result.add( const FadeTransitionPage(
+        ///这里有个细节采用const+key固定的方式避免页面重复创建,也就是对应的element
+        ///（同时state类对象是同一个，与之_colors也是同一个）仍然是复用的同一个
+        ///去除const以及key取UniqueKey()则每次都会创建新的页面，将永远得不到更新（add操作）
+        result.add(const FadeTransitionPage(
           key: ValueKey('/color'),
+          // key: UniqueKey(),
           child:ColorPage(),
         ));
       }

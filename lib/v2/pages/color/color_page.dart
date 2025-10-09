@@ -18,7 +18,14 @@ class _ColorPageState extends State<ColorPage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    print('ColorPageState ==> colors:${_colors.length}');
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('ColorPageState ==> build');
     return Scaffold(
       // appBar: AppBar(title:const Text('颜色主页')),
       floatingActionButton: FloatingActionButton(
