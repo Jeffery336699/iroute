@@ -30,6 +30,7 @@ class _AppToolBarState extends State<AppToolBar> {
   }
 
   void _changRoute() {
+    print('111111111111');
     _ctrl.text= router.value.join(',');
   }
 
